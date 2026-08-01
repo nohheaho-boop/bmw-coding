@@ -529,7 +529,581 @@
 
 <!-- [추가기능 4] 하단 플로팅 카카오톡 문의 버튼 -->
 <!-- 카카오톡 링크 수정 필요: 링크 1 -->
-<a href="https://open.kakao.com/o/여기에_오픈채팅방_주소_입력" target="_blank" class="floating-btn" id="floatingKakao">
+<a href="<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BMW & MINI 코딩 전문 | DriveOne</title>
+    <style>
+        :root {
+            --primary: #9bb7d4; /* 파스텔 블루 */
+            --primary-light: #cddceb;
+            --secondary: #e6e0d4; /* 파스텔 베이지 */
+            --text-dark: #4a4a4a;
+            --text-light: #7a7a7a;
+            --bg-color: #fcfbf9;
+            --white: #ffffff;
+            --accent: #d4a5a5; /* 파스텔 핑크 포인트 */
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-dark);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .app-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--white);
+            min-height: 100vh;
+            box-shadow: 0 0 20px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            padding-bottom: 80px; /* 플로팅 버튼 공간 확보 */
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 20px;
+            background: linear-gradient(135deg, var(--primary-light) 0%, var(--white) 100%);
+        }
+
+        header h1 {
+            color: var(--primary);
+            font-size: 28px;
+            margin: 0 0 10px 0;
+            font-weight: 800;
+        }
+
+        header p {
+            color: var(--text-light);
+            font-size: 14px;
+            margin: 0;
+        }
+
+        /* 탭 메뉴 스타일 */
+        .tab-nav {
+            display: flex;
+            border-bottom: 1px solid var(--secondary);
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 15px 0;
+            text-align: center;
+            background: none;
+            border: none;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--text-light);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn.active {
+            color: var(--primary);
+            border-bottom: 3px solid var(--primary);
+        }
+
+        .tab-content {
+            display: none;
+            padding: 30px 20px;
+            flex: 1;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* 공통 컨텐츠 스타일 */
+        h2 {
+            font-size: 20px;
+            color: var(--primary);
+            margin-top: 0;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px dashed var(--secondary);
+        }
+
+        .info-card {
+            background-color: var(--bg-color);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #f0eee9;
+        }
+
+        .info-card h3 {
+            margin-top: 0;
+            font-size: 16px;
+            color: var(--accent);
+            margin-bottom: 10px;
+        }
+
+        ul {
+            padding-left: 20px;
+            margin-bottom: 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        /* 작업 프로세스 스타일 */
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+            background: var(--white);
+            padding: 10px 15px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        .process-num {
+            background: var(--primary);
+            color: var(--white);
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 12px;
+            margin-right: 12px;
+            flex-shrink: 0;
+        }
+
+        /* FAQ 스타일 (아코디언) */
+        details {
+            background: var(--white);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+        
+        summary {
+            padding: 15px;
+            font-weight: bold;
+            font-size: 14px;
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--text-dark);
+        }
+        
+        summary::-webkit-details-marker {
+            display: none;
+        }
+        
+        summary::after {
+            content: '▼';
+            font-size: 12px;
+            color: var(--primary);
+            transition: transform 0.3s;
+        }
+        
+        details[open] summary::after {
+            transform: rotate(180deg);
+        }
+        
+        .faq-answer {
+            padding: 0 15px 15px;
+            font-size: 13.5px;
+            color: var(--text-light);
+            border-top: 1px dashed var(--secondary);
+            margin-top: 5px;
+            padding-top: 10px;
+        }
+
+        /* OS 테이블 스타일 */
+        .os-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 13px;
+            margin-top: 10px;
+        }
+
+        .os-table th, .os-table td {
+            border: 1px solid var(--secondary);
+            padding: 8px;
+            text-align: center;
+        }
+
+        .os-table th {
+            background-color: var(--primary-light);
+            color: var(--text-dark);
+            font-weight: bold;
+        }
+
+        /* 폼 스타일 */
+        .apply-form {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 14px;
+            font-weight: bold;
+            color: var(--text-dark);
+        }
+
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid var(--secondary);
+            border-radius: 8px;
+            font-size: 15px;
+            box-sizing: border-box;
+            background-color: var(--white);
+            transition: border 0.3s;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+
+        .submit-btn {
+            background-color: var(--primary);
+            color: var(--white);
+            border: none;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 10px;
+            display: block;
+            width: 100%;
+            text-align: center;
+            text-decoration: none;
+            box-sizing: border-box;
+        }
+
+        .submit-btn:hover {
+            background-color: #88a6c3;
+        }
+
+        .notice-text {
+            font-size: 12px;
+            color: var(--accent);
+            text-align: center;
+            margin-top: 10px;
+        }
+
+        /* 소셜 링크 */
+        .social-links {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        
+        .social-btn {
+            flex: 1;
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        
+        .btn-blog { background-color: #03c75a; color: white; }
+        .btn-insta { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); color: white; }
+
+        /* 리뷰 플레이스홀더 */
+        .review-box {
+            background: var(--white);
+            border: 1px solid var(--secondary);
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.02);
+        }
+        
+        .review-author { font-weight: bold; font-size: 14px; margin-bottom: 5px; color: var(--primary); }
+        .review-text { font-size: 14px; color: var(--text-dark); }
+
+        /* 하단 플로팅 버튼 스타일 */
+        .floating-btn {
+            position: fixed;
+            bottom: 30px;
+            right: max(20px, calc(50% - 280px)); /* PC 화면에서 컨테이너 우측에 맞춤 */
+            background-color: #fee500; /* 카카오톡 노란색 */
+            color: #381e1f;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            z-index: 999;
+            transition: transform 0.3s ease;
+        }
+        
+        .floating-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .floating-btn svg {
+            width: 24px;
+            height: 24px;
+            margin-bottom: 2px;
+            fill: #381e1f;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="app-container">
+    <header>
+        <h1>DriveOne</h1>
+        <p>BMW & MINI 맞춤형 프리미엄 코딩</p>
+    </header>
+
+    <!-- 탭 네비게이션 -->
+    <nav class="tab-nav">
+        <button class="tab-btn active" onclick="openTab('tab-intro')">소개</button>
+        <button class="tab-btn" onclick="openTab('tab-work')">안내/FAQ</button>
+        <button class="tab-btn" onclick="openTab('tab-review')">작업 후기</button>
+        <button class="tab-btn" onclick="openTab('tab-apply')">신청하기</button>
+    </nav>
+
+    <!-- 1. 소개 탭 -->
+    <div id="tab-intro" class="tab-content active">
+        <h2>안녕하세요, DriveOne입니다.</h2>
+        
+        <div class="info-card">
+            <h3>✨ 투명하고 정직한 풀코딩</h3>
+            <p style="font-size: 14px;">업체보다 합리적인 비용으로 진행되며, <strong>'어떤 코딩을 했는지', '어떻게 써야 하는지'</strong> 하나하나 상세히 알려드립니다. 안 한 것을 했다고 속이는 일은 절대 없습니다.</p>
+        </div>
+
+        <div class="info-card">
+            <h3>🛡️ 안전 우선 및 AS 보증</h3>
+            <ul>
+                <li>고장이 발생할 수 있는 부분은 일절 건드리지 않습니다.</li>
+                <li>작업 후 차량 문제 발생 시 코더의 책임은 없음을 사전 양지 부탁드립니다.</li>
+                <li>리콜 및 펌웨어 업데이트로 코딩이 초기화되었을 경우, <strong>재코딩 1회 무료</strong> 혜택을 드립니다.<br>
+                <small style="color:var(--text-light);">(단, 방문 고객 및 가입된 카페 정성스런 후기 작성 시 / BMW 매니아 카페 제외)</small></li>
+            </ul>
+        </div>
+        
+        <div class="social-links">
+            <a href="https://m.blog.naver.com/west_twae_ji_0201" target="_blank" class="social-btn btn-blog">네이버 블로그</a>
+            <a href="https://www.instagram.com/driveone_2025" target="_blank" class="social-btn btn-insta">인스타그램</a>
+        </div>
+    </div>
+
+    <!-- 2. 작업 안내 탭 (안내 + FAQ + 프로세스 결합) -->
+    <div id="tab-work" class="tab-content">
+        <h2>코딩 및 작업 안내</h2>
+        
+        <!-- [추가기능 3] 작업 프로세스 -->
+        <div class="info-card">
+            <h3>📋 작업 진행 프로세스</h3>
+            <div class="process-step">
+                <div class="process-num">1</div>
+                <div>차대번호 및 차종, 원하시는 작업 문의</div>
+            </div>
+            <div class="process-step">
+                <div class="process-num">2</div>
+                <div>가능 항목 안내 및 작업 일정/장소 예약</div>
+            </div>
+            <div class="process-step">
+                <div class="process-num">3</div>
+                <div>방문 또는 출장 작업 진행 (20~60분)</div>
+            </div>
+            <div class="process-step">
+                <div class="process-num">4</div>
+                <div>차량 설정 세팅 및 기능 100% 활용법 안내</div>
+            </div>
+        </div>
+
+        <div class="info-card">
+            <h3>💰 작업 비용 및 내비/카플레이</h3>
+            <ul>
+                <li><strong>기본 풀코딩:</strong> 80,000원 (방문 기준 / 출장 시 거리별 비용 추가)</li>
+                <li><strong>애플 카플레이 활성화:</strong> 100,000원 (정품 시리얼 코드 구입비 포함)</li>
+                <li><strong>순정 내비게이션 업데이트:</strong> 100,000원 (최신 버전, 코드 구입비 포함)</li>
+                <li style="color:var(--accent); font-weight:bold; margin-top:5px;">※ 위 3가지 동시 작업 시 비용 할인(DC) 협의 가능!</li>
+            </ul>
+        </div>
+
+        <!-- [추가기능 1] 자주 묻는 질문 FAQ -->
+        <div class="info-card" style="background-color: transparent; border: none; padding: 0;">
+            <h3>💡 자주 묻는 질문 (FAQ)</h3>
+            <details>
+                <summary>Q. 차량 보증(BSI)에 문제가 생기나요?</summary>
+                <div class="faq-answer">안전이 검증된 기능만 활성화하며, 공식 센터의 차량 보증(AS)에 문제 되는 부분이나 고장 위험이 있는 모듈은 일체 건드리지 않으니 안심하셔도 됩니다.</div>
+            </details>
+            <details>
+                <summary>Q. 출장 지역과 비용은 어떻게 되나요?</summary>
+                <div class="faq-answer">제가 계신 곳으로 방문 시 코딩 8만원이며, 고객님 계신 곳으로 출장을 원하실 경우 거리에 따라 소정의 출장비가 추가됩니다. 상세 비용은 문의 시 안내해 드립니다.</div>
+            </details>
+            <details>
+                <summary>Q. 내 차도 코딩/업데이트가 가능할까요?</summary>
+                <div class="faq-answer">아래 <strong>연식 및 운영체제 호환표</strong>를 참고해 주세요. 같은 연식이라도 옵션(예: 6GT 24년식은 ID7 적용)에 따라 다를 수 있으므로 차대번호로 정확한 조회가 필요합니다.</div>
+            </details>
+        </div>
+
+        <div class="info-card">
+            <h3>🚗 연식 및 운영체제(OS) 호환표</h3>
+            <table class="os-table">
+                <tr>
+                    <th>연식 및 OS</th>
+                    <th>코딩</th>
+                    <th>내비 업뎃</th>
+                </tr>
+                <tr><td>00~12 (CIC/Premium)</td><td>불가</td><td>불가</td></tr>
+                <tr><td>13~17 (ID4/Next)</td><td>가능</td><td>가능</td></tr>
+                <tr><td>18~20 (ID5,6/EVO)</td><td>가능*</td><td>가능</td></tr>
+                <tr><td>21~22 (ID7/Live)</td><td>가능</td><td>가능</td></tr>
+                <tr><td>22~23 (ID8/Joy)</td><td>가능</td><td>가능</td></tr>
+                <tr><td>23~26 (ID8.5)</td><td>일부만</td><td>가능</td></tr>
+            </table>
+            <p style="font-size:12px; margin-top:10px; color:var(--text-light);">
+                * ID5, 6은 애플 카플레이 활성화 가능
+            </p>
+        </div>
+    </div>
+
+    <!-- 3. 작업 후기 탭 (고객 후기 구체화) -->
+    <div id="tab-review" class="tab-content">
+        <h2>생생한 작업 후기</h2>
+        <p style="font-size:14px; color:var(--text-light); margin-bottom:20px;">
+            DriveOne을 찾아주신 고객님들의 리얼 후기입니다. 인스타그램에서 더 많은 작업 내역을 확인하세요!
+        </p>
+        
+        <!-- [추가기능 2] 실제 고객 후기 박스 -->
+        <div class="review-box">
+            <div class="review-author">⭐ BMW 5시리즈 차주님</div>
+            <div class="review-text">"코딩 항목만 띡 해주고 가는게 아니라, 어떤 기능이 어떻게 바뀌었는지 하나하나 세팅 방법까지 친절하게 알려주셔서 너무 좋았습니다. 꼼꼼한 작업 감사해요!"</div>
+        </div>
+        
+        <div class="review-box">
+            <div class="review-author">⭐ MINI 클럽맨 차주님</div>
+            <div class="review-text">"답답했던 화면이 카플레이 풀스크린으로 꽉 차니까 새 차 타는 기분이네요. 출장으로 와주셔서 시간도 아끼고 완벽하게 세팅 받았습니다."</div>
+        </div>
+        
+        <div class="review-box">
+            <div class="review-author">⭐ BMW X5 차주님</div>
+            <div class="review-text">"타 업체에서 안 된다고 했던 기능들까지 찾아서 살려주셨어요. 확실히 전문가셔서 차종별로 가능한 범위를 정확히 알고 계십니다. 강추합니다!"</div>
+        </div>
+        
+        <a href="https://www.instagram.com/driveone_2025" target="_blank" class="submit-btn" style="background:var(--text-dark);">인스타그램에서 더 많은 후기 보기</a>
+    </div>
+
+    <!-- 4. 신청하기 탭 -->
+    <div id="tab-apply" class="tab-content">
+        <h2>코딩 및 작업 신청하기</h2>
+        <p style="font-size:14px; color:var(--text-light); margin-bottom:20px;">아래 정보를 입력하신 후 '카카오톡으로 신청하기'를 누르시면 자동으로 내용이 전달됩니다.</p>
+        
+        <div class="apply-form">
+            <div class="form-group">
+                <label for="userName">성함</label>
+                <input type="text" id="userName" placeholder="홍길동">
+            </div>
+            
+            <div class="form-group">
+                <label for="userPhone">연락처</label>
+                <input type="tel" id="userPhone" placeholder="010-0000-0000">
+            </div>
+            
+            <div class="form-group">
+                <label for="carModel">차종 및 연식</label>
+                <input type="text" id="carModel" placeholder="예: BMW 520i 2022년식">
+            </div>
+            
+            <div class="form-group">
+                <label for="inquiry">문의 내용</label>
+                <textarea id="inquiry" rows="4" placeholder="풀코딩 / 카플레이 / 내비업데이트 / 출장 요청(지역) 등 문의하실 내용을 적어주세요."></textarea>
+            </div>
+            
+            <button class="submit-btn" onclick="sendToKakao()">카카오톡으로 신청하기</button>
+            <p class="notice-text">제출 시 예약 상담을 위한 카카오톡 채팅방으로 연결됩니다.</p>
+        </div>
+    </div>
+</div>
+
+<!-- [추가기능 4] 하단 플로팅 카카오톡 문의 버튼 -->
+<!-- 카카오톡 링크 수정 필요: 링크 1 -->
+<a href="https://open.kakao.com/o/gUasPb2g" target="_blank" class="floating-btn" id="floatingKakao">
+    <!-- 카카오톡 말풍선 아이콘 (SVG) -->
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 3C6.477 3 2 6.425 2 10.648c0 2.706 1.764 5.086 4.417 6.377-.14 1.25-1.282 4.093-1.328 4.215-.05.127.042.122.13.064.07-.046 3.033-1.956 4.14-2.836.852.17 1.738.256 2.641.256 5.523 0 10-3.425 10-7.648C22 6.425 17.523 3 12 3z"/>
+    </svg>
+    <span>빠른상담</span>
+</a>
+
+<script>
+    // 탭 전환 스크립트
+    function openTab(tabId) {
+        document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+        document.querySelectorAll('.tab-content').forEach(content => content.classList.remove('active'));
+        
+        document.querySelector(`.tab-btn[onclick="openTab('${tabId}')"]`).classList.add('active');
+        document.getElementById(tabId).classList.add('active');
+        
+        // 화면 최상단으로 스크롤 부드럽게 이동
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // 카카오톡 전송 스크립트
+    function sendToKakao() {
+        const name = document.getElementById('userName').value;
+        const phone = document.getElementById('userPhone').value;
+        const car = document.getElementById('carModel').value;
+        const inquiry = document.getElementById('inquiry').value;
+        
+        if(!name || !phone) {
+            alert('성함과 연락처를 입력해주세요.');
+            return;
+        }
+
+        // 카카오톡 링크 수정 필요: 링크 2
+        const kakaoOpenChatLink = 'https://open.kakao.com/o/gUasPb2g';
+        
+        alert(`작성해주신 정보가 확인되었습니다.\n확인을 누르시면 상담 채팅방으로 이동합니다.\n\n[입력된 정보]\n성함: ${name}\n차종: ${car}\n\n* 실제 운영 시에는 채팅방 입장 후 위 내용을 붙여넣어 주시면 빠른 상담이 가능합니다.`);
+        
+        window.open(kakaoOpenChatLink, '_blank');
+    }
+</script>
+
+</body>
+</html>" target="_blank" class="floating-btn" id="floatingKakao">
     <!-- 카카오톡 말풍선 아이콘 (SVG) -->
     <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
         <path d="M12 3C6.477 3 2 6.425 2 10.648c0 2.706 1.764 5.086 4.417 6.377-.14 1.25-1.282 4.093-1.328 4.215-.05.127.042.122.13.064.07-.046 3.033-1.956 4.14-2.836.852.17 1.738.256 2.641.256 5.523 0 10-3.425 10-7.648C22 6.425 17.523 3 12 3z"/>
